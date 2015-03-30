@@ -36,12 +36,12 @@ public class CompromissoControle {
 		service.remover(compromisso.getId());
 	}
 	
-	public Compromisso getPorId(Long id){
-		return service.getPorId(id);
+	public Compromisso getPorId(){
+		return service.getPorId(compromisso.getId());
 	}
 	
-	public Compromisso listarPorDescricao(String descricao){
-		return service.listarPorDescricao(descricao);
+	public Compromisso listarPorDescricao(){
+		return service.listarPorDescricao(compromisso.getDescricao());
 	}
 	
 	public List<Compromisso> listarTodos(){

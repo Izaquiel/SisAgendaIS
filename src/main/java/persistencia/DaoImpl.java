@@ -21,9 +21,12 @@ public class DaoImpl<T> implements Dao<T> {
 
 	@Inject
 	private EntityManager em;
+	private Session session;
 
 	public Session getSession() {
-		Session session = em.unwrap(Session.class);
+		if (session == null) {
+			session = em.unwrap(Session.class);
+		}
 		return session;
 	}
 
@@ -41,32 +44,38 @@ public class DaoImpl<T> implements Dao<T> {
 		em.getTransaction().commit();
 
 	}
-	
+
 	@Override
 	public void remover(Long id) {
 		em.getTransaction().begin();
 		em.remove(em.merge(id));
 		em.getTransaction().commit();
 	}
-	
+
+	@SuppressWarnings("unchecked")
 	@Override
-	public T getPorId(Long id, Class<?> c) {		
+	public T getPorId(Long id, Class<?> c) {
 		Criteria cri = getSession().createCriteria(c);
 		cri.add(Restrictions.eq("id", id));
-		return (T) cri.uniqueResult();
+		T result = (T) cri.uniqueResult();
+		return result;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> listarTodos(Class<?> c) {
 		Criteria cri = getSession().createCriteria(c);
-		return cri.list();
+		List<T> list = cri.list();
+		return list;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T listar(String campo, Object value, Class<?> c) {
 		Criteria cri = getSession().createCriteria(c);
 		cri.add(Restrictions.eq(campo, value));
-		return (T) cri.uniqueResult();
+		T result = (T) cri.uniqueResult();
+		return result;
 	}
 
 }

@@ -23,37 +23,37 @@ public class PessoaControle{
 	@Inject
 	private PessoaService service;
 
-	private Pessoa p = new Pessoa();
+	private Pessoa pessoa = new Pessoa();
 
 	public PessoaControle() {
 	}
 
 	public void salvar() {
-		service.salvar(p);
+		service.salvar(pessoa);
 	}
 	
 	public void remover(){
-		service.remover(p.getId());
+		service.remover(pessoa.getId());
 	}
 	
-	public Pessoa getPorId(Long id){
-		return service.getPorId(id);
+	public Pessoa getPorId(){
+		return service.getPorId(pessoa.getId());
 	}
 	
-	public Pessoa listarPorNome(String nome){
-		return service.listarPorNome(nome);
+	public Pessoa listarPorNome(){
+		return service.listarPorNome(pessoa.getNome());
 	}
 	
 	public List<Pessoa> listarTodos(){
 		return service.listarTodos();
 	}
 
-	public Pessoa getP() {
-		return p;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-	public void setP(Pessoa p) {
-		this.p = p;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
 }

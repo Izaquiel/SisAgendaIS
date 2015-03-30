@@ -37,8 +37,8 @@ public class AgendamentoControle {
 		service.remover(agendamento.getId());
 	}
 	
-	public Agendamento getPorId(Long id){
-		return service.getPorId(id);
+	public Agendamento getPorId(){
+		return service.getPorId(agendamento.getId());
 	}
 	
 	public Agendamento listarPorStatusCumprido(){
