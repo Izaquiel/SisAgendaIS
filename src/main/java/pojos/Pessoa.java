@@ -1,0 +1,174 @@
+package pojos;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+/**
+ * @author Izaquiel Cruz
+ *
+ */
+@Entity	
+public class Pessoa implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+	private Long id;
+	private String nome;
+	private String username;
+	private String password;
+	private boolean enabled;
+	private List<Autorizacao> autorizacoes;
+	private String endereco;
+	private String numero;
+	private String bairro;
+	private String cep;
+	private String cidade;
+	private String estado;
+	
+	public Pessoa() {
+	}
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id")
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	@Column(name="nome", length=100)
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	@Column(name="username", length=20)
+	public String getUsername() {
+		return username;
+	}
+	
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	@OneToMany
+	public List<Autorizacao> getAutorizacoes() {
+		return autorizacoes;
+	}
+
+	public void setAutorizacoes(List<Autorizacao> autorizacoes) {
+		this.autorizacoes = autorizacoes;
+	}
+
+	@Column(name="password", length=20)
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	@Column(name="enable", columnDefinition="BOOLEAN")
+	public boolean isEnable() {
+		return enabled;
+	}
+
+	public void setEnable(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	@Column(name="endereco", length=60)
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+	
+	@Column(name="numero", length=8)
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+	
+	@Column(name="bairro", length=20)
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	@Column(name="cep", length=9)
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+	
+	@Column(name="cidade", length=40)
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+	
+	@Column(name="estado", length=25)
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pessoa other = (Pessoa) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+		
+	
+}
