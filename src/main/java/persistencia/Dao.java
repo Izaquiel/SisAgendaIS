@@ -15,7 +15,7 @@ public interface Dao<T> {
 	
 	public List<T> listarTodos(Class<?> c);
 	
-	public T listar(String campo, String value, Class<?> c);
+	public T listar(String campo, Object value, Class<?> c);
 
 	public void remover(Long id);
 	

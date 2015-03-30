@@ -63,7 +63,7 @@ public class DaoImpl<T> implements Dao<T> {
 	}
 
 	@Override
-	public T listar(String campo, String value, Class<?> c) {
+	public T listar(String campo, Object value, Class<?> c) {
 		Criteria cri = getSession().createCriteria(c);
 		cri.add(Restrictions.eq(campo, value));
 		return (T) cri.uniqueResult();

@@ -3,7 +3,6 @@
  */
 package beans;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -19,10 +18,8 @@ import servicos.PessoaService;
  */
 @Named
 @RequestScoped
-public class PessoaControle implements Serializable{
-
-	private static final long serialVersionUID = 1L;
-
+public class PessoaControle{
+	
 	@Inject
 	private PessoaService service;
 
@@ -35,12 +32,12 @@ public class PessoaControle implements Serializable{
 		service.salvar(p);
 	}
 	
-	public void atualizar(){
-		service.atualizar(p);
-	}
-	
 	public void remover(){
 		service.remover(p.getId());
+	}
+	
+	public Pessoa getPorId(Long id){
+		return service.getPorId(id);
 	}
 	
 	public Pessoa listarPorNome(String nome){
