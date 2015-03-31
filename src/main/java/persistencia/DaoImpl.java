@@ -33,7 +33,7 @@ public class DaoImpl<T> implements Dao<T> {
 	@Override
 	public void salvar(T entity) {
 		em.getTransaction().begin();
-		em.persist(entity);
+		em.merge(entity);
 		em.getTransaction().commit();
 	}
 

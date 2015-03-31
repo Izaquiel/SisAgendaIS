@@ -3,12 +3,16 @@ package pojos;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+
+import enums.Estado;
 
 /**
  * @author Izaquiel Cruz
@@ -30,13 +34,13 @@ public class Pessoa implements Serializable{
 	private String bairro;
 	private String cep;
 	private String cidade;
-	private String estado;
+	private Estado estado;
 	
 	public Pessoa() {
 	}
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue
 	@Column(name="id")
 	public Long getId() {
 		return id;
@@ -64,7 +68,8 @@ public class Pessoa implements Serializable{
 		this.username = username;
 	}
 	
-	@OneToMany
+	//nao coloquei @JoinColumn aqui pq um ManyToMany vai virar uma nova tabela com o id das duas.
+	@ManyToMany(cascade=CascadeType.MERGE)
 	public List<Autorizacao> getAutorizacoes() {
 		return autorizacoes;
 	}
@@ -82,12 +87,12 @@ public class Pessoa implements Serializable{
 		this.password = password;
 	}
 	
-	@Column(name="enable", columnDefinition="BOOLEAN")
-	public boolean isEnable() {
+	@Column(name="enabled")
+	public boolean isEnabled() {
 		return enabled;
 	}
 
-	public void setEnable(boolean enabled) {
+	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
 
@@ -135,13 +140,14 @@ public class Pessoa implements Serializable{
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-	
-	@Column(name="estado", length=25)
-	public String getEstado() {
+
+	@Enumerated(EnumType.STRING)
+	@Column(name="estado", length=2)
+	public Estado getEstado() {
 		return estado;
 	}
 
-	public void setEstado(String estado) {
+	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
 

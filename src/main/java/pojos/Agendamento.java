@@ -74,6 +74,7 @@ public class Agendamento implements Serializable{
 	}
 	
 	@Temporal(TemporalType.DATE)
+	@Column(name="dataCadastro")
 	public Date getDataCadastro() {
 		return dataCadastro;
 	}
@@ -83,6 +84,7 @@ public class Agendamento implements Serializable{
 	}
 	
 	@Temporal(TemporalType.TIME)
+	@Column(name="horaCadastro")
 	public Date getHoraCadastro() {
 		return horaCadastro;
 	}
@@ -92,6 +94,7 @@ public class Agendamento implements Serializable{
 	}
 	
 	@Temporal(TemporalType.DATE)
+	@Column(name="dataExecucao")
 	public Date getDataExecucao() {
 		return dataExecucao;
 	}
@@ -101,6 +104,7 @@ public class Agendamento implements Serializable{
 	}
 	
 	@Temporal(TemporalType.TIME)
+	@Column(name="horaExecucao")
 	public Date getHoraExecucao() {
 		return horaExecucao;
 	}
@@ -110,6 +114,7 @@ public class Agendamento implements Serializable{
 	}
 	
 	@Enumerated(EnumType.STRING)
+	@Column(name="status")
 	public Status getStatus() {
 		return status;
 	}
