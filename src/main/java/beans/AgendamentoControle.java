@@ -3,15 +3,19 @@
  */
 package beans;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import pojos.Agendamento;
 import servicos.AgendamentoService;
 import enums.Status;
+import filter.AgendamentoFilter;
 
 /**
  * @author Izaquiel Cruz
@@ -25,12 +29,15 @@ public class AgendamentoControle {
 	private AgendamentoService service;
 	
 	private Agendamento agendamento = new Agendamento();
+	private Date data = new Date();
 	
 	public AgendamentoControle() {
 	}
 	
 	public void salvar() {
+		agendamento.setDataCadastro(new Date());
 		service.salvar(agendamento);
+		agendamento = new Agendamento();
 	}
 	
 	public void remover(){
@@ -38,15 +45,21 @@ public class AgendamentoControle {
 	}
 	
 	public Agendamento getPorId(){
-		return service.getPorId(agendamento.getId());
+		AgendamentoFilter filter = new AgendamentoFilter();
+		filter.setId(agendamento.getId());
+		return service.getComFiltro(filter);
 	}
 	
-	public Agendamento listarPorStatusCumprido(){
-		return service.listarPorStatus(Status.CUMPRIDO);
+	public List<Agendamento> listarPorStatusCumprido(){
+		AgendamentoFilter filter = new AgendamentoFilter();
+		filter.setStatus(Status.CUMPRIDO);
+		return service.listarPorFiltro(filter);
 	}
 	
-	public Agendamento listarPorStatusNaoCumprido(){
-		return service.listarPorStatus(Status.NAO_CUMPRIDO);
+	public List<Agendamento> listarPorStatusNaoCumprido(){
+		AgendamentoFilter filter = new AgendamentoFilter();
+		filter.setStatus(Status.NAO_CUMPRIDO);
+		return service.listarPorFiltro(filter);
 	}
 	
 	public List<Agendamento> listarTodos(){
@@ -60,5 +73,20 @@ public class AgendamentoControle {
 	public void setAgendamento(Agendamento agendamento) {
 		this.agendamento = agendamento;
 	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
 	
+	public List<SelectItem> Status(){
+		List<SelectItem> lista = new ArrayList<>();
+		for (Status es : Status.values()) {
+			lista.add(new SelectItem(es, es.name()));
+		}
+		return lista;
+	}
 }

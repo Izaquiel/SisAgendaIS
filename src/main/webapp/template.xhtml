@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title><ui:insert name="title">Inicio</ui:insert></title>
+	<ui:insert name="styles">
+		<link rel="stylesheet" href="resources/bootstrap/bootstrap.min.css"></link>
+		<link rel="stylesheet" href="resources/styles/styles.css"></link>
+	</ui:insert>
+	<ui:insert name="scripts"></ui:insert>
+</h:head>
+
+<h:body>
+	<div class="container">
+		<div id="header">
+			<ui:insert name="header">
+				<h2>Inicio</h2>
+			</ui:insert>
+		</div>
+
+		<div id="top">
+			<ui:insert name="top">
+				<p:menubar>
+					<p:submenu label="Cadastrar" icon="ui-icon-document">
+						<p:menuitem value="Pessoa" url="cadastroPessoa.xhtml" />
+						<p:menuitem value="Compromisso" url="cadastroCompromisso.xhtml" />
+						<p:menuitem value="Agendamento" url="cadastroAgendamento.xhtml" />
+					</p:submenu>
+					<p:submenu label="Listar" icon="ui-icon-document">
+						<p:menuitem value="Pessoa" url="listaPessoa.xhtml" />
+						<p:menuitem value="Compromisso" url="listaCompromisso.xhtml" />
+						<p:menuitem value="Agendamento" url="listaAgendamento.xhtml" />
+					</p:submenu>
+
+					<f:facet name="options">
+						<p:commandButton type="button" value="Logout"
+							icon="ui-icon-extlink" />
+					</f:facet>
+
+				</p:menubar>
+			</ui:insert>
+
+		</div>
+
+		<div id="content">
+			<ui:insert name="content">
+				<h2>Bem-Vindo</h2>
+			</ui:insert>
+		</div>
+
+		<div id="footer">
+			<ui:insert name="footer">
+			</ui:insert>
+		</div>
+	</div>
+</h:body>
+
+</html>

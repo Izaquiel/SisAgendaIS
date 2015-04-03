@@ -4,6 +4,7 @@
 package persistencia;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Izaquiel Cruz
@@ -15,11 +16,14 @@ public interface Dao<T> {
 	
 	public List<T> listarTodos(Class<?> c);
 	
-	public T listar(String campo, Object value, Class<?> c);
-
+	@SuppressWarnings("rawtypes")
+	public T getComFiltro(Map params,  Class<?> c);
+	
+	@SuppressWarnings("rawtypes")
+	public List<T> listarComFiltro(Map params,  Class<?> c);
+	
 	public void remover(Long id);
 	
 	public void atualizar(T entity);
 	
-	public T getPorId(Long id, Class<?> c);
 }

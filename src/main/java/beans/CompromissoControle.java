@@ -9,6 +9,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import filter.CompromissoFilter;
 import pojos.Compromisso;
 import servicos.CompromissoService;
 
@@ -30,6 +31,7 @@ public class CompromissoControle {
 	
 	public void salvar() {
 		service.salvar(compromisso);
+		compromisso = new Compromisso();
 	}
 	
 	public void remover(){
@@ -37,11 +39,15 @@ public class CompromissoControle {
 	}
 	
 	public Compromisso getPorId(){
-		return service.getPorId(compromisso.getId());
+		CompromissoFilter filter = new CompromissoFilter();
+		filter.setId(compromisso.getId());
+		return service.listarPorFiltro(filter);
 	}
 	
 	public Compromisso listarPorDescricao(){
-		return service.listarPorDescricao(compromisso.getDescricao());
+		CompromissoFilter filter = new CompromissoFilter();
+		filter.setDescricao(compromisso.getDescricao());
+		return service.listarPorFiltro(filter);
 	}
 	
 	public List<Compromisso> listarTodos(){

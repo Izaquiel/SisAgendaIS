@@ -4,6 +4,8 @@
 package persistencia;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -54,28 +56,41 @@ public class DaoImpl<T> implements Dao<T> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public T getPorId(Long id, Class<?> c) {
-		Criteria cri = getSession().createCriteria(c);
-		cri.add(Restrictions.eq("id", id));
-		T result = (T) cri.uniqueResult();
-		return result;
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
 	public List<T> listarTodos(Class<?> c) {
 		Criteria cri = getSession().createCriteria(c);
 		List<T> list = cri.list();
 		return list;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public T listar(String campo, Object value, Class<?> c) {
+	public T getComFiltro(Map params, Class<?> c) {
+		
 		Criteria cri = getSession().createCriteria(c);
-		cri.add(Restrictions.eq(campo, value));
+
+		Set<String> chaves = params.keySet();
+
+		for (String chave : chaves) {
+			cri.add(Restrictions.eq(chave, params.get(chave)));
+		}
+
 		T result = (T) cri.uniqueResult();
 		return result;
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@Override
+	public List<T> listarComFiltro(Map params, Class<?> c) {
+		
+		Criteria cri = getSession().createCriteria(c);
+		
+		Set<String> chaves = params.keySet();
+		
+		for (String chave : chaves) {
+			cri.add(Restrictions.eq(chave, params.get(chave)));
+		}
+		
+		return cri.list();
+	}
+	
 }

@@ -3,12 +3,15 @@
  */
 package servicos;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import persistencia.Dao;
 import pojos.Pessoa;
+import filter.PessoaFilter;
 
 /**
  * @author Izaquiel Cruz
@@ -31,10 +34,28 @@ public class PessoaService{
 		return dao.listarTodos(Pessoa.class);
 	}
 
-	public Pessoa listarPorNome(String value) {
-		return dao.listar("nome", value, Pessoa.class);
+	public Pessoa GetComFiltro(PessoaFilter filtro){
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		if(filtro.getNome() != null){
+			map.put("nome", filtro.getNome());
+			return dao.getComFiltro(map, Pessoa.class);
+		}
+		
+		if(filtro.getId() != null){
+			map.put("id", filtro.getId());
+			return dao.getComFiltro(map, Pessoa.class);
+		}
+		
+		if(filtro.getUsername() != null && filtro.getPassword() != null){
+			map.put("username", filtro.getUsername());
+			map.put("password", filtro.getPassword());
+			return dao.getComFiltro(map, Pessoa.class);
+		}
+		
+		return null;
 	}
-
 
 	public void remover(Long id) {
 		dao.remover(id);
@@ -45,9 +66,5 @@ public class PessoaService{
 		
 	}
 
-	public Pessoa getPorId(Long id) {
-		return dao.getPorId(id, Pessoa.class);
-	}
-	
 
 }

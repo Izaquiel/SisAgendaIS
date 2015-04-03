@@ -27,7 +27,7 @@ public class Pessoa implements Serializable{
 	private String nome;
 	private String username;
 	private String password;
-	private boolean enabled;
+	private boolean enable;
 	private List<Autorizacao> autorizacoes;
 	private String endereco;
 	private String numero;
@@ -87,13 +87,13 @@ public class Pessoa implements Serializable{
 		this.password = password;
 	}
 	
-	@Column(name="enabled")
-	public boolean isEnabled() {
-		return enabled;
+	@Column(name="enable")
+	public boolean isEnable() {
+		return enable;
 	}
 
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
+	public void setEnable(boolean enable) {
+		this.enable = enable;
 	}
 
 	@Column(name="endereco", length=60)
