@@ -10,52 +10,64 @@
 		<link rel="stylesheet" href="resources/bootstrap/bootstrap.min.css"></link>
 		<link rel="stylesheet" href="resources/styles/styles.css"></link>
 	</ui:insert>
-	<ui:insert name="scripts"></ui:insert>
+	<ui:insert name="scripts">
+
+	</ui:insert>
 </h:head>
 
 <h:body>
-	<div class="container">
-		<div id="header">
-			<ui:insert name="header">
-				<h2>Inicio</h2>
-			</ui:insert>
-		</div>
+	<p:layout fullPage="true" >
 
 		<div id="top">
-			<ui:insert name="top">
-				<p:menubar>
-					<p:submenu label="Cadastrar" icon="ui-icon-document">
-						<p:menuitem value="Pessoa" url="cadastroPessoa.xhtml" />
-						<p:menuitem value="Compromisso" url="cadastroCompromisso.xhtml" />
-						<p:menuitem value="Agendamento" url="cadastroAgendamento.xhtml" />
-					</p:submenu>
-					<p:submenu label="Listar" icon="ui-icon-document">
-						<p:menuitem value="Pessoa" url="listaPessoa.xhtml" />
-						<p:menuitem value="Compromisso" url="listaCompromisso.xhtml" />
-						<p:menuitem value="Agendamento" url="listaAgendamento.xhtml" />
-					</p:submenu>
+			<p:layoutUnit position="north" size="80" resizable="true"
+				collapsible="true">
+				<ui:insert name="top">
+					<h2>Sistema de Agendamento</h2>
+				</ui:insert>
+			</p:layoutUnit>
+		</div>
 
-					<f:facet name="options">
-						<p:commandButton type="button" value="Logout"
-							icon="ui-icon-extlink" />
-					</f:facet>
+		<div id="left">
+			<p:layoutUnit position="west" size="200" resizable="true"
+				collapsible="true">
+				<ui:insert name="left">
+					<p:panelMenu style="width:190px">
+						<p:submenu label="Cadastrar" icon="ui-icon-document">
+							<p:menuitem value="Pessoa" url="cadastroPessoa.xhtml" icon="ui-icon-contact" />
+							<p:menuitem value="Compromisso" url="cadastroCompromisso.xhtml" icon="ui-icon-contact" />
+							<p:menuitem value="Agendamento" url="cadastroAgendamento.xhtml" icon="ui-icon-contact" />
+						</p:submenu>
 
-				</p:menubar>
-			</ui:insert>
+						<p:submenu label="Pesquisar" >
+							<p:menuitem value="Pessoa" url="pesquisaPessoa.xhtml" icon="ui-icon-search" />
+							<p:menuitem value="Compromisso" url="#" icon="ui-icon-search" />
+							<p:menuitem value="Agendamento" url="#" icon="ui-icon-search" />
+						</p:submenu>
 
+					</p:panelMenu>
+					<p:commandButton type="button" value="Logout"
+						icon="ui-icon-extlink" />
+				</ui:insert>
+			</p:layoutUnit>
 		</div>
 
 		<div id="content">
 			<ui:insert name="content">
-				<h2>Bem-Vindo</h2>
+				<p:layoutUnit position="center" resizable="true" collapsible="true">
+					<h2>Bem-Vindo</h2>
+				</p:layoutUnit>
 			</ui:insert>
 		</div>
 
 		<div id="footer">
 			<ui:insert name="footer">
+				<p:layoutUnit position="south" size="50" resizable="true"
+					collapsible="true">
+					<p:outputLabel>Todos os Direitos reservados</p:outputLabel>
+				</p:layoutUnit>
 			</ui:insert>
 		</div>
-	</div>
+	</p:layout>
 </h:body>
 
 </html>

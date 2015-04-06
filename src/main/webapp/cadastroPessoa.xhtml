@@ -14,71 +14,71 @@
 	<ui:define name="scripts">
 		<script type="text/javascript" src="resources/scripts.js"></script>
 	</ui:define>
-	<ui:define name="header">
-		<h2>Cadastro de Pessoa</h2>
-	</ui:define>
 
 	<ui:define name="content">
-		<h:form>
+		<p:layoutUnit position="center">
+			<h:form id="form">
 
-			<p:tabView>
-				<p:tab title="Dados da Pessoa">
-					<p:outputLabel value="Nome:"></p:outputLabel>
-					<p:inputText styleClass="form-control"
-						value="#{pessoaControle.pessoa.nome}">
-					</p:inputText>
+				<p:tabView>
+					<p:tab title="Dados da Pessoa">
+						<p:outputLabel value="Nome:"></p:outputLabel>
+						<p:inputText styleClass="form-control"
+							value="#{pessoaControle.pessoa.nome}">
+						</p:inputText>
 
-					<p:outputLabel value="Username/Login:"></p:outputLabel>
-					<p:inputText styleClass="form-control"
-						value="#{pessoaControle.pessoa.username}">
-					</p:inputText>
+						<p:outputLabel value="Username/Login:"></p:outputLabel>
+						<p:inputText styleClass="form-control"
+							value="#{pessoaControle.pessoa.username}">
+						</p:inputText>
 
-					<p:outputLabel value="Senha:"></p:outputLabel>
-					<p:password styleClass="form-control"
-						value="#{pessoaControle.pessoa.password}">
-					</p:password>
-				</p:tab>
-				<p:tab title="Dados de Endereço">
-					<p:outputLabel value="Endereço:"></p:outputLabel>
-					<p:inputText styleClass="form-control"
-						value="#{pessoaControle.pessoa.endereco}">
-					</p:inputText>
+						<p:outputLabel value="Senha:"></p:outputLabel>
+						<p:password styleClass="form-control"
+							value="#{pessoaControle.pessoa.password}">
+						</p:password>
+					</p:tab>
+					<p:tab title="Dados de Endereço">
+						<p:outputLabel value="Endereço:"></p:outputLabel>
+						<p:inputText styleClass="form-control"
+							value="#{pessoaControle.pessoa.endereco}">
+						</p:inputText>
 
-					<p:outputLabel value="Numero:"></p:outputLabel>
-					<p:inputText styleClass="form-control"
-						value="#{pessoaControle.pessoa.numero}"
-						onkeypress="mascara(this, removerDigitos)">
-					</p:inputText>
+						<p:outputLabel value="Numero:"></p:outputLabel>
+						<p:inputText styleClass="form-control"
+							value="#{pessoaControle.pessoa.numero}"
+							onkeypress="mascara(this, removerDigitos)">
+						</p:inputText>
 
-					<p:outputLabel value="Bairro:"></p:outputLabel>
-					<p:inputText styleClass="form-control"
-						value="#{pessoaControle.pessoa.bairro}">
-					</p:inputText>
+						<p:outputLabel value="Bairro:"></p:outputLabel>
+						<p:inputText styleClass="form-control"
+							value="#{pessoaControle.pessoa.bairro}">
+						</p:inputText>
 
-					<p:outputLabel value="Cep:"></p:outputLabel>
-					<p:inputText styleClass="form-control"
-						value="#{pessoaControle.pessoa.cep}"
-						onkeypress="mascara(this, cep_mask)" maxlength="9">
-					</p:inputText>
+						<p:outputLabel value="Cep:"></p:outputLabel>
+						<p:inputText styleClass="form-control"
+							value="#{pessoaControle.pessoa.cep}"
+							onkeypress="mascara(this, cep_mask)" maxlength="9">
+						</p:inputText>
 
-					<p:outputLabel value="Cidade:"></p:outputLabel>
-					<p:inputText styleClass="form-control"
-						value="#{pessoaControle.pessoa.cidade}">
-					</p:inputText>
-					<p:outputLabel value="Estado:"></p:outputLabel>
-					<p:selectOneMenu value="#{pessoaControle.pessoa.estado}">
-						<f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
-						<f:selectItems value="#{pessoaControle.Estados()}" />
-					</p:selectOneMenu>
+						<p:outputLabel value="Cidade:"></p:outputLabel>
+						<p:inputText styleClass="form-control"
+							value="#{pessoaControle.pessoa.cidade}">
+						</p:inputText>
+						<p:outputLabel value="Estado:"></p:outputLabel>
+						<br />
+						<p:selectOneMenu value="#{pessoaControle.pessoa.estado}">
+							<f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
+							<f:selectItems value="#{pessoaControle.Estados()}" />
+						</p:selectOneMenu>
+					</p:tab>
 
-				</p:tab>
-			</p:tabView>
+				</p:tabView>
 
-			<p:commandButton styleClass="btn btn-success pull-right"
-				style="margin-top: 10px;" action="#{pessoaControle.salvar()}"
-				value="Salvar" ajax="false"></p:commandButton>
-		</h:form>
+					<p:commandButton styleClass="btn btn-success pull-right"
+					style="margin-top: 10px;" action="#{pessoaControle.salvar()}"
+					value="Salvar" ajax="false"></p:commandButton>
 
+			</h:form>
+		</p:layoutUnit>
 	</ui:define>
 
 </ui:composition>

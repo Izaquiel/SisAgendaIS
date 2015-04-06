@@ -21,7 +21,6 @@ public class PessoaFilter {
 	private List<Autorizacao> autorizacoes;
 	
 	public PessoaFilter() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Long getId() {

@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -87,7 +88,7 @@ public class DaoImpl<T> implements Dao<T> {
 		Set<String> chaves = params.keySet();
 		
 		for (String chave : chaves) {
-			cri.add(Restrictions.eq(chave, params.get(chave)));
+			cri.add(Restrictions.ilike(chave, (String) params.get(chave), MatchMode.ANYWHERE));
 		}
 		
 		return cri.list();

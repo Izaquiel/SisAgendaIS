@@ -12,38 +12,35 @@
 		<link rel="stylesheet" href="resources/styles/styles.css"></link>
 	</ui:define>
 
-	<ui:define name="header">
-		<h2>Lista de Agendamentos</h2>
-	</ui:define>
 	<ui:define name="content">
-		<p:dataTable var="agend" value="#{agendamentoControle.listarTodos()}"
-			rows="5" paginator="true"
-			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-			rowsPerPageTemplate="5,10,15">
-			<p:column headerText="Responsavel">
-				<h:outputText value="#{agend.pessoa.nome}" />
-			</p:column>
-			<p:column headerText="Compromisso">
-				<h:outputText value="#{agend.compromisso.descricao}" />
-			</p:column>
+		<p:layoutUnit position="center">
+			<p:dataTable var="agend" value="#{agendamentoControle.listarTodos()}"
+				rows="5" paginator="true"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+				<p:column headerText="Responsavel">
+					<h:outputText value="#{agend.pessoa.nome}" />
+				</p:column>
+				<p:column headerText="Compromisso">
+					<h:outputText value="#{agend.compromisso.descricao}" />
+				</p:column>
 
-			<p:column headerText="Data de Cadastro">
-				<h:outputText value="#{agend.dataCadastro}">
-					<f:convertDateTime type="date" pattern="dd-MM-yyyy"
-						timeZone="GMT-3" />
-				</h:outputText>
-			</p:column>
+				<p:column headerText="Data de Cadastro">
+					<h:outputText value="#{agend.dataCadastro}">
+						<f:convertDateTime type="date" pattern="dd-MM-yyyy"
+							timeZone="GMT-3" />
+					</h:outputText>
+				</p:column>
 
-			<p:column headerText="Data para Execução">
-				<h:outputText value="#{agend.dataExecucao}">
-					<f:convertDateTime type="date" pattern="dd-MM-yyyy"
-						timeZone="GMT-3" />
-				</h:outputText>
-			</p:column>
-		</p:dataTable>
+				<p:column headerText="Data para Execução">
+					<h:outputText value="#{agend.dataExecucao}">
+						<f:convertDateTime type="date" pattern="dd-MM-yyyy"
+							timeZone="GMT-3" />
+					</h:outputText>
+				</p:column>
+			</p:dataTable>
+		</p:layoutUnit>
 	</ui:define>
-	<ui:define name="footer">
 
-	</ui:define>
 </ui:composition>
 </html>

@@ -12,24 +12,21 @@
 		<link rel="stylesheet" href="resources/styles/styles.css"></link>
 	</ui:define>
 
-	<ui:define name="header">
-		<h2>Lista de Compromissos</h2>
-	</ui:define>
 	<ui:define name="content">
-		<p:dataTable var="comp" value="#{compromissoControle.listarTodos()}"
-			rows="5" paginator="true"
-			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-			rowsPerPageTemplate="5,10,15">
-			<p:column headerText="Descrição">
-				<h:outputText value="#{comp.descricao}" />
-			</p:column>
-			<p:column headerText="Observação">
-				<h:outputText value="#{comp.observacao}" />
-			</p:column>
-		</p:dataTable>
+		<p:layoutUnit position="center">
+			<p:dataTable var="comp" value="#{compromissoControle.listarTodos()}"
+				rows="5" paginator="true"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+				<p:column headerText="Descrição">
+					<h:outputText value="#{comp.descricao}" />
+				</p:column>
+				<p:column headerText="Observação">
+					<h:outputText value="#{comp.observacao}" />
+				</p:column>
+			</p:dataTable>
+		</p:layoutUnit>
 	</ui:define>
-	<ui:define name="footer">
 
-	</ui:define>
 </ui:composition>
 </html>

@@ -12,32 +12,28 @@
 		<link rel="stylesheet" href="resources/styles/styles.css"></link>
 	</ui:define>
 
-	<ui:define name="header">
-		<h2>Cadastro de Compromisso</h2>
-	</ui:define>
 	<ui:define name="content">
-		<h:form>
-			<p:tabView>
-				<p:tab title="Dados do Compromisso">
-					<p:outputLabel value="Descrição:"></p:outputLabel>
-					<p:inputText styleClass="form-control"
-						value="#{compromissoControle.compromisso.descricao}">
-					</p:inputText>
+		<p:layoutUnit position="center">
+			<h:form id="form">
+				<p:tabView>
+					<p:tab title="Dados do Compromisso">
+						<p:outputLabel value="Descrição:"></p:outputLabel>
+						<p:inputText styleClass="form-control"
+							value="#{compromissoControle.compromisso.descricao}">
+						</p:inputText>
 
-					<p:outputLabel value="Observação:"></p:outputLabel>
-					<p:inputText styleClass="form-control"
-						value="#{compromissoControle.compromisso.observacao}">
-					</p:inputText>
-				</p:tab>
-			</p:tabView>
+						<p:outputLabel value="Observação:"></p:outputLabel>
+						<p:inputText styleClass="form-control"
+							value="#{compromissoControle.compromisso.observacao}">
+						</p:inputText>
+					</p:tab>
+				</p:tabView>
 
-			<p:commandButton styleClass="btn btn-success pull-right"
-				style="margin-top: 10px;" action="#{compromissoControle.salvar()}"
-				value="Salvar" ajax="false"></p:commandButton>
-		</h:form>
-	</ui:define>
-	<ui:define name="footer">
-
+				<p:commandButton styleClass="btn btn-success pull-right"
+					style="margin-top: 10px;" action="#{compromissoControle.salvar()}"
+					value="Salvar" ajax="false"></p:commandButton>
+			</h:form>
+		</p:layoutUnit>
 	</ui:define>
 </ui:composition>
 </html>
