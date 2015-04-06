@@ -11,7 +11,6 @@ import javax.inject.Inject;
 
 import persistencia.Dao;
 import pojos.Compromisso;
-import pojos.Pessoa;
 import filter.CompromissoFilter;
 
 /**
@@ -34,20 +33,31 @@ public class CompromissoService {
 		return dao.listarTodos(Compromisso.class);
 	}
 
-	public Compromisso listarPorFiltro(CompromissoFilter filtro) {
+	public Compromisso getComFiltro(CompromissoFilter filtro) {
 
 		Map<String, Object> map = new HashMap<>();
 
-		if (filtro.getDescricao() != null) {
+		if (filtro.getDescricao() != null && filtro.getDescricao() != "") {
 			map.put("descricao", filtro.getDescricao());
-			return dao.getComFiltro(map, Pessoa.class);
+			return dao.getComFiltro(map, Compromisso.class);
 		}
 
 		if (filtro.getId() != null) {
 			map.put("id", filtro.getId());
-			return dao.getComFiltro(map, Pessoa.class);
+			return dao.getComFiltro(map, Compromisso.class);
 		}
 
+		return null;
+	}
+	
+	public List<Compromisso> listarComFiltro(CompromissoFilter filtro) {
+
+		Map<String, Object> map = new HashMap<>();
+
+		if (filtro.getDescricao() != null && filtro.getDescricao() != "") {
+			map.put("descricao", filtro.getDescricao());
+			return dao.listarComFiltro(map, Compromisso.class);
+		}
 		return null;
 	}
 

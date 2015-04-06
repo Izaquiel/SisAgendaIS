@@ -3,29 +3,30 @@
  */
 package beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import filter.CompromissoFilter;
 import pojos.Compromisso;
 import servicos.CompromissoService;
+import filter.CompromissoFilter;
 
 /**
  * @author Izaquiel Cruz
  *
  */
 @Named
-@RequestScoped
+@ViewScoped
 public class CompromissoControle {
 	
 	@Inject
 	private CompromissoService service;
 	
 	private Compromisso compromisso = new Compromisso();
-	
+	private List<Compromisso> compromissos = new ArrayList<>();
 	public CompromissoControle() {
 	}
 	
@@ -41,17 +42,18 @@ public class CompromissoControle {
 	public Compromisso getPorId(){
 		CompromissoFilter filter = new CompromissoFilter();
 		filter.setId(compromisso.getId());
-		return service.listarPorFiltro(filter);
+		return service.getComFiltro(filter);
 	}
 	
-	public Compromisso listarPorDescricao(){
+	public void listarPorDescricao(){
 		CompromissoFilter filter = new CompromissoFilter();
 		filter.setDescricao(compromisso.getDescricao());
-		return service.listarPorFiltro(filter);
+		compromissos = service.listarComFiltro(filter);
+		compromisso = new Compromisso();
 	}
 	
-	public List<Compromisso> listarTodos(){
-		return service.listarTodos();
+	public void listarTodos(){
+		compromissos = service.listarTodos();
 	}
 
 	public Compromisso getCompromisso() {
@@ -60,6 +62,14 @@ public class CompromissoControle {
 
 	public void setCompromisso(Compromisso compromisso) {
 		this.compromisso = compromisso;
+	}
+
+	public List<Compromisso> getCompromissos() {
+		return compromissos;
+	}
+
+	public void setCompromissos(List<Compromisso> compromissos) {
+		this.compromissos = compromissos;
 	}
 	
 }

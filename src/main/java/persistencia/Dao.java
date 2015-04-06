@@ -17,6 +17,9 @@ public interface Dao<T> {
 	public List<T> listarTodos(Class<?> c);
 	
 	@SuppressWarnings("rawtypes")
+	public List<T> listarPorStatus(Map params, Class<?> c);
+	
+	@SuppressWarnings("rawtypes")
 	public T getComFiltro(Map params,  Class<?> c);
 	
 	@SuppressWarnings("rawtypes")

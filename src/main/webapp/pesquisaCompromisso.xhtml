@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="./template.xhtml">
-	<ui:define name="title">Lista de Pessoas</ui:define>
+	<ui:define name="title">Lista de Compromissos</ui:define>
 	<ui:define name="styles">
 		<link rel="stylesheet" href="resources/bootstrap/bootstrap.min.css"></link>
 		<link rel="stylesheet" href="resources/styles/styles.css"></link>
@@ -14,49 +14,44 @@
 	<ui:define name="scripts">
 		<script type="text/javascript">
 			function limparCampos(){
-  		    document.getElementById("nome") = "";
-  		    document.getElementById("username") = "";   
+  		    document.getElementById("descricao") = "";  
 			}
 		</script>
 	</ui:define>
-
 	<ui:define name="content">
-
 		<p:layoutUnit position="center">
 			<h:form>
-				<p:outputLabel value="Digite o Nome da Pessoa:"></p:outputLabel>
-				<p:inputText id="nome" value="#{pessoaControle.pessoa.nome}"></p:inputText>
+				<p:outputLabel
+					value="Digite a Descrição ou uma parte da Descrição do Compromisso:"></p:outputLabel>
+				<p:inputText id="descricao"
+					value="#{compromissoControle.compromisso.descricao}"></p:inputText>
 				<br />
-				<p:outputLabel value="Ou"></p:outputLabel>
-				<br />
-				<p:outputLabel value="Digite o Username/Login da Pessoa:"></p:outputLabel>
-				<p:inputText id="username" value="#{pessoaControle.pessoa.username}"></p:inputText>
-				<br />
+
 				<p:commandButton styleClass="btn btn-success" value="Pesquisar"
-					action="#{pessoaControle.listaPorFiltro()}" update="tab"
+					action="#{compromissoControle.listarPorDescricao()}" update="tab"
 					onclick="limparCampos()">
 				</p:commandButton>
 				<p:commandButton styleClass="btn btn-success" value="Listar Todos"
-					action="#{pessoaControle.listarTodos()}" update="tab">
+					action="#{compromissoControle.listarTodos()}" update="tab">
 				</p:commandButton>
-				<p:dataTable id="tab" var="p" value="#{pessoaControle.pessoas}"
-					rows="5" paginator="true"
+
+				<p:dataTable id="tab" var="c"
+					value="#{compromissoControle.compromissos}" rows="5"
+					paginator="true"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="5,10,15">
-					<p:column headerText="Nome" style="text-align: center;">
-						<h:outputText value="#{p.nome}" />
+					<p:column headerText="Descrição" style="text-align: center;">
+						<h:outputText value="#{c.descricao}" />
 					</p:column>
 
-					<p:column headerText="Username" style="text-align: center;">
-						<h:outputText value="#{p.username}" />
+					<p:column headerText="Observação" style="text-align: center;">
+						<h:outputText value="#{c.observacao}" />
 					</p:column>
 
 				</p:dataTable>
 			</h:form>
 
 		</p:layoutUnit>
-
 	</ui:define>
-
 </ui:composition>
 </html>

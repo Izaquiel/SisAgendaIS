@@ -66,7 +66,7 @@ public class DaoImpl<T> implements Dao<T> {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public T getComFiltro(Map params, Class<?> c) {
-		
+
 		Criteria cri = getSession().createCriteria(c);
 
 		Set<String> chaves = params.keySet();
@@ -82,16 +82,30 @@ public class DaoImpl<T> implements Dao<T> {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List<T> listarComFiltro(Map params, Class<?> c) {
-		
+
 		Criteria cri = getSession().createCriteria(c);
-		
+
 		Set<String> chaves = params.keySet();
-		
+
 		for (String chave : chaves) {
-			cri.add(Restrictions.ilike(chave, (String) params.get(chave), MatchMode.ANYWHERE));
+			cri.add(Restrictions.ilike(chave, (String) params.get(chave),
+					MatchMode.ANYWHERE));
 		}
-		
+
 		return cri.list();
 	}
-	
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public List<T> listarPorStatus(Map params, Class<?> c) {
+
+		Criteria cri = getSession().createCriteria(c);
+
+		Set<String> chaves = params.keySet();
+
+		for (String chave : chaves) {
+			cri.add(Restrictions.eq(chave, params.get(chave)));
+		}
+
+		return cri.list();
+	}
 }

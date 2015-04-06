@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
 import javax.faces.model.SelectItem;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -22,7 +22,7 @@ import filter.AgendamentoFilter;
  *
  */
 @Named
-@RequestScoped
+@ViewScoped
 public class AgendamentoControle {
 
 	@Inject
@@ -30,6 +30,7 @@ public class AgendamentoControle {
 	
 	private Agendamento agendamento = new Agendamento();
 	private Date data = new Date();
+	private List<Agendamento> agendamentos = new ArrayList<>();
 	
 	public AgendamentoControle() {
 	}
@@ -50,20 +51,15 @@ public class AgendamentoControle {
 		return service.getComFiltro(filter);
 	}
 	
-	public List<Agendamento> listarPorStatusCumprido(){
+	public void listarPorStatus(){
 		AgendamentoFilter filter = new AgendamentoFilter();
-		filter.setStatus(Status.CUMPRIDO);
-		return service.listarPorFiltro(filter);
+		filter.setStatus(agendamento.getStatus());
+		agendamentos = service.listarPorFiltro(filter);
+		agendamento = new Agendamento();
 	}
 	
-	public List<Agendamento> listarPorStatusNaoCumprido(){
-		AgendamentoFilter filter = new AgendamentoFilter();
-		filter.setStatus(Status.NAO_CUMPRIDO);
-		return service.listarPorFiltro(filter);
-	}
-	
-	public List<Agendamento> listarTodos(){
-		return service.listarTodos();
+	public void listarTodos(){
+		agendamentos = service.listarTodos();
 	}
 
 	public Agendamento getAgendamento() {
@@ -82,6 +78,14 @@ public class AgendamentoControle {
 		this.data = data;
 	}
 	
+	public List<Agendamento> getAgendamentos() {
+		return agendamentos;
+	}
+
+	public void setAgendamentos(List<Agendamento> agendamentos) {
+		this.agendamentos = agendamentos;
+	}
+
 	public List<SelectItem> Status(){
 		List<SelectItem> lista = new ArrayList<>();
 		for (Status es : Status.values()) {

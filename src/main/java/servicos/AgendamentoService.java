@@ -11,7 +11,6 @@ import javax.inject.Inject;
 
 import persistencia.Dao;
 import pojos.Agendamento;
-import pojos.Pessoa;
 import filter.AgendamentoFilter;
 
 /**
@@ -40,7 +39,7 @@ public class AgendamentoService {
 
 		if (filtro.getId() != null) {
 			map.put("id", filtro.getId());
-			return dao.getComFiltro(map, Pessoa.class);
+			return dao.getComFiltro(map, Agendamento.class);
 		}
 
 		return null;
@@ -52,7 +51,7 @@ public class AgendamentoService {
 		
 		if (filtro.getStatus() != null) {
 			map.put("status", filtro.getStatus());
-			return dao.listarComFiltro(map, Pessoa.class);
+			return dao.listarPorStatus(map, Agendamento.class);
 		}
 		
 		return null;

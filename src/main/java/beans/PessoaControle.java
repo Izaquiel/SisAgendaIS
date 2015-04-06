@@ -11,8 +11,6 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.primefaces.context.RequestContext;
-
 import pojos.Pessoa;
 import servicos.PessoaService;
 import enums.Estado;
@@ -58,13 +56,11 @@ public class PessoaControle{
 		filter.setNome(pessoa.getNome());
 		pessoas = service.listaComFiltro(filter);
 		pessoa = new Pessoa();
-		RequestContext.getCurrentInstance().execute("mostrarCampo();");
 
 	}
 	
-	public List<Pessoa> listarTodos(){
+	public void listarTodos(){
 		pessoas = service.listarTodos();
-		return pessoas;
 	}
 
 	public Pessoa getPessoa() {

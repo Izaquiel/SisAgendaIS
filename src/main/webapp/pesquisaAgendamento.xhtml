@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="./template.xhtml">
+	<ui:define name="title">Lista de Agendamentos</ui:define>
+	<ui:define name="styles">
+		<link rel="stylesheet" href="resources/bootstrap/bootstrap.min.css"></link>
+		<link rel="stylesheet" href="resources/styles/styles.css"></link>
+	</ui:define>
+	<ui:define name="content">
+		<p:layoutUnit position="center">
+			<h:form>
+				<p:outputLabel value="Escolha o Status do Agendamento:"></p:outputLabel>
+				<p:selectOneMenu value="#{agendamentoControle.agendamento.status}">
+					<f:selectItems value="#{agendamentoControle.Status()}"></f:selectItems>
+				</p:selectOneMenu>
+				<br />
+				<p:commandButton styleClass="btn btn-success" value="Pesquisar"
+					action="#{agendamentoControle.listarPorStatus()}" update="tab"
+					onclick="limparCampos()">
+				</p:commandButton>
+
+				<p:commandButton styleClass="btn btn-success" value="Listar Todos"
+					action="#{agendamentoControle.listarTodos()}" update="tab">
+				</p:commandButton>
+
+				<p:dataTable id="tab" var="ag"
+					value="#{agendamentoControle.agendamentos}" rows="5"
+					paginator="true"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+					<p:column headerText="Responsável" style="text-align: center;">
+						<h:outputText value="#{ag.pessoa.nome}" />
+					</p:column>
+
+					<p:column headerText="Compromisso" style="text-align: center;">
+						<h:outputText value="#{ag.compromisso.descricao}" />
+					</p:column>
+
+					<p:column headerText="Data de Cadastro" style="text-align: center;">
+						<h:outputText value="#{ag.dataCadastro}" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+
+		</p:layoutUnit>
+	</ui:define>
+</ui:composition>
+</html>
