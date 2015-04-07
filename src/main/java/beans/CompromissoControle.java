@@ -52,8 +52,8 @@ public class CompromissoControle {
 		compromisso = new Compromisso();
 	}
 	
-	public void listarTodos(){
-		compromissos = service.listarTodos();
+	public List<Compromisso> listarTodos(){
+		return compromissos = service.listarTodos();
 	}
 
 	public Compromisso getCompromisso() {

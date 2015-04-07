@@ -20,6 +20,7 @@
 			<h:form id="form">
 
 				<p:tabView>
+
 					<p:tab title="Dados da Pessoa">
 						<p:outputLabel value="Nome:"></p:outputLabel>
 						<p:inputText styleClass="form-control"
@@ -35,6 +36,7 @@
 						<p:password styleClass="form-control"
 							value="#{pessoaControle.pessoa.password}">
 						</p:password>
+
 					</p:tab>
 					<p:tab title="Dados de Endereço">
 						<p:outputLabel value="Endereço:"></p:outputLabel>
@@ -73,7 +75,7 @@
 
 				</p:tabView>
 
-					<p:commandButton styleClass="btn btn-success pull-right"
+				<p:commandButton styleClass="btn btn-success pull-right"
 					style="margin-top: 10px;" action="#{pessoaControle.salvar()}"
 					value="Salvar" ajax="false"></p:commandButton>
 

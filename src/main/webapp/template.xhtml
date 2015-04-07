@@ -19,29 +19,27 @@
 	<p:layout fullPage="true" >
 
 		<div id="top">
-			<p:layoutUnit position="north" size="80" resizable="true"
+			<p:layoutUnit id="topo" position="north" size="110" resizable="true"
 				collapsible="true">
 				<ui:insert name="top">
-					<h2>Sistema de Agendamento</h2>
+					<img id="logo" src="resources/imagens/lo.png" />
+<!-- 					<h2>Sistema de Agendamento</h2> -->
 				</ui:insert>
 			</p:layoutUnit>
 		</div>
 
 		<div id="left">
-			<p:layoutUnit position="west" size="200" resizable="true"
+			<p:layoutUnit position="west" size="220" resizable="true"
 				collapsible="true">
 				<ui:insert name="left">
-					<p:panelMenu style="width:190px">
-						<p:submenu label="Cadastrar" icon="ui-icon-document">
-							<p:menuitem value="Pessoa" url="cadastroPessoa.xhtml" icon="ui-icon-contact" />
+					<p:panelMenu style="width:210px">
+						<p:submenu label="Cadastros" icon="ui-icon-document">
+							<p:menuitem value="Pessoa" url="pesquisaPessoa.xhtml" icon="ui-icon-contact" />
 							<p:menuitem value="Compromisso" url="cadastroCompromisso.xhtml" icon="ui-icon-contact" />
-							<p:menuitem value="Agendamento" url="cadastroAgendamento.xhtml" icon="ui-icon-contact" />
 						</p:submenu>
 
-						<p:submenu label="Pesquisar" >
-							<p:menuitem value="Pessoa" url="pesquisaPessoa.xhtml" icon="ui-icon-search" />
-							<p:menuitem value="Compromisso" url="pesquisaCompromisso.xhtml" icon="ui-icon-search" />
-							<p:menuitem value="Agendamento" url="pesquisaAgendamento.xhtml" icon="ui-icon-search" />
+						<p:submenu label="Agendamento" >
+							<p:menuitem value="Realizar Agendamento" url="pesquisaAgendamento.xhtml" icon="ui-icon-contact" />
 						</p:submenu>
 
 					</p:panelMenu>

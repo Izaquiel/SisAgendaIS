@@ -1,18 +1,25 @@
-
-#top{
-	margin-bottom: 20px;
+#top {
+	margin-bottom: 10px;
 	text-align: center;
 }
 
-#footer{
+.ui-layout-unit-content {
+	background-color: #F9FBFE;
+}
+
+#logo{
+	border-radius: 10px;
+}
+
+#footer {
 	text-align: center;
 }
 
-#form{
-	background-color:#EFF3F6;
+#form {
+	background-color: #EFF3F6;
 	max-width: 900px;
 }
 
-.form-control{
+.form-control {
 	max-width: 500px;
 }

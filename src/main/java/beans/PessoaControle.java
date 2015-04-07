@@ -6,6 +6,8 @@ package beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -37,6 +39,7 @@ public class PessoaControle{
 		pessoa.setEnable(true);
 		service.salvar(pessoa);
 		pessoa = new Pessoa();
+		addMessage("Pessoa Cadastrada com Sucesso!");
 	}
 	
 	public void remover(){
@@ -59,8 +62,8 @@ public class PessoaControle{
 
 	}
 	
-	public void listarTodos(){
-		pessoas = service.listarTodos();
+	public List<Pessoa> listarTodos(){
+		return pessoas = service.listarTodos();
 	}
 
 	public Pessoa getPessoa() {
@@ -86,4 +89,9 @@ public class PessoaControle{
 		}
 		return lista;
 	}
+	
+	public void addMessage(String summary) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary,  null);
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
 }
