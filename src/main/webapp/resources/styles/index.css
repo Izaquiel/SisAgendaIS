@@ -1,0 +1,28 @@
+
+#container {
+	width: 90%;
+	height: 90%;
+	padding: 15px;
+	margin: 0 auto;
+	background-color:#F0FFF0;
+}
+
+#agenda{
+	margin-top: 5%;
+	float: right;
+
+}
+
+#texto{
+	margin-top: 8%;
+	margin-left: 8%;
+	width:50%;
+	float: left;
+
+}
+
+#footer{
+	margin-top:37%;
+	text-align: center;
+
+}
