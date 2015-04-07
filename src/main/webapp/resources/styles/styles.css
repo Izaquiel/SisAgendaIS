@@ -17,9 +17,28 @@
 
 #form {
 	background-color: #EFF3F6;
-	max-width: 900px;
+	max-width: 700px;
 }
 
 .form-control {
-	max-width: 500px;
+	max-width: 600px;
 }
+
+/*configuração das abas inicio*/
+
+.ui-tabs .ui-tabs-panel{
+	padding: 0.5em 0.2em !important;
+}
+
+.ui-tabs {
+	padding: 0px !important;
+}
+
+.ui-tabs .ui-tabs-nav{
+	margin: -1px !important;
+}
+
+.ui-tabs.ui-tabs-top .ui-tabs-nav{
+	padding: 0.5em 0.2em !important
+}
+/*configuração das abas fim*/

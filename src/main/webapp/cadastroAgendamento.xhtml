@@ -18,59 +18,58 @@
 				<p:tabView>
 
 					<p:tab title="Dados do Agendamento">
-
-						<p:outputLabel value="Pessoa:"></p:outputLabel>
-						<br />
-						<p:selectOneMenu value="#{agendamentoControle.agendamento.pessoa}"
-							converter="pessoaConverter">
-							<f:selectItems value="#{pessoaControle.listarTodos()}" var="pe"
-								itemLabel="#{pe.nome}" itemValue="#{pe}"></f:selectItems>
-						</p:selectOneMenu>
-						<br />
-
-
-						<p:outputLabel value="Compromisso:"></p:outputLabel>
-						<br />
-						<p:selectOneMenu
-							value="#{agendamentoControle.agendamento.compromisso}"
-							converter="compromissoConverter">
-							<f:selectItems value="#{compromissoControle.listarTodos()}"
-								var="com" itemLabel="#{com.descricao}" itemValue="#{com}"></f:selectItems>
-						</p:selectOneMenu>
-						<br />
-
-
-						<p:outputLabel value="Data de Cadastro:"></p:outputLabel>
-						<br />
-						<p:inputText value="#{agendamentoControle.data}" disabled="true">
-							<f:passThroughAttribute name="type" value="date"></f:passThroughAttribute>
-							<f:convertDateTime type="date" pattern="dd-MM-yyyy"
-								timeZone="GMT-3" />
-						</p:inputText>
-						<br />
-						<p:outputLabel value="Hora de Cadastro:" />
-						<br />
-						<p:calendar
-							value="#{agendamentoControle.agendamento.horaCadastro}"
-							pattern="HH:mm a" timeOnly="true" />
-						<br />
-						<p:outputLabel value="Data de Execução:"></p:outputLabel>
-						<br />
-						<p:calendar
-							value="#{agendamentoControle.agendamento.dataExecucao}">
-						</p:calendar>
-						<br />
-						<p:outputLabel value="Hora de Execução:" />
-						<br />
-						<p:calendar
-							value="#{agendamentoControle.agendamento.horaExecucao}"
-							pattern="HH:mm a" timeOnly="true" />
-						<br />
-						<p:outputLabel value="Status:"></p:outputLabel>
-						<br />
-						<p:selectOneMenu value="#{agendamentoControle.agendamento.status}">
-							<f:selectItems value="#{agendamentoControle.Status()}"></f:selectItems>
-						</p:selectOneMenu>
+						<p:panelGrid columns="2" styleClass="form-control">
+							<p:outputLabel value="Pessoa:"></p:outputLabel>
+						
+							<p:selectOneMenu
+								value="#{agendamentoControle.agendamento.pessoa}"
+								converter="pessoaConverter">
+								<f:selectItems value="#{pessoaControle.listarTodos()}" var="pe"
+									itemLabel="#{pe.nome}" itemValue="#{pe}"></f:selectItems>
+							</p:selectOneMenu>
+							
+							<p:outputLabel value="Compromisso:"></p:outputLabel>
+							
+							<p:selectOneMenu
+								value="#{agendamentoControle.agendamento.compromisso}"
+								converter="compromissoConverter">
+								<f:selectItems value="#{compromissoControle.listarTodos()}"
+									var="com" itemLabel="#{com.descricao}" itemValue="#{com}"></f:selectItems>
+							</p:selectOneMenu>
+						
+							<p:outputLabel value="Data de Cadastro:"></p:outputLabel>
+							
+							<p:inputText value="#{agendamentoControle.data}" disabled="true">
+								<f:passThroughAttribute name="type" value="date"></f:passThroughAttribute>
+								<f:convertDateTime type="date" pattern="dd-MM-yyyy"
+									timeZone="GMT-3" />
+							</p:inputText>
+							
+							<p:outputLabel value="Hora de Cadastro:" />
+							
+							<p:calendar
+								value="#{agendamentoControle.agendamento.horaCadastro}"
+								pattern="HH:mm a" timeOnly="true" />
+							
+							<p:outputLabel value="Data de Execução:"></p:outputLabel>
+							
+							<p:calendar
+								value="#{agendamentoControle.agendamento.dataExecucao}" pattern="dd/MM/yyyy">
+							</p:calendar>
+							
+							<p:outputLabel value="Hora de Execução:" />
+						
+							<p:calendar
+								value="#{agendamentoControle.agendamento.horaExecucao}"
+								pattern="HH:mm a" timeOnly="true" />
+							
+							<p:outputLabel value="Status:"></p:outputLabel>
+							
+							<p:selectOneMenu
+								value="#{agendamentoControle.agendamento.status}">
+								<f:selectItems value="#{agendamentoControle.Status()}"></f:selectItems>
+							</p:selectOneMenu>
+						</p:panelGrid>
 					</p:tab>
 				</p:tabView>
 				<p:commandButton styleClass="btn btn-success pull-right"

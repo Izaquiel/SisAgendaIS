@@ -14,20 +14,19 @@
 	<ui:define name="content">
 		<p:layoutUnit position="center">
 			<h:form>
-				<p:outputLabel value="Escolha o Status do Agendamento:"></p:outputLabel>
-				<p:selectOneMenu value="#{agendamentoControle.agendamento.status}">
-					<f:selectItems value="#{agendamentoControle.Status()}"></f:selectItems>
-				</p:selectOneMenu>
-				<br />
-				<p:commandButton styleClass="btn btn-success" value="Pesquisar"
-					action="#{agendamentoControle.listarPorStatus()}" update="tab"
-					onclick="limparCampos()">
-				</p:commandButton>
+				<p:panelGrid columns="2" style="text-align:center;">
+					<p:outputLabel value="Escolha o Status do Agendamento:" />
+					<p:selectOneMenu value="#{agendamentoControle.agendamento.status}" >
+						<f:selectItems value="#{agendamentoControle.Status()}" />
+					</p:selectOneMenu>
 
-				<p:commandButton styleClass="btn btn-success" value="Listar Todos"
-					action="#{agendamentoControle.listarTodos()}" update="tab">
-				</p:commandButton>
+					<p:commandButton styleClass="btn btn-success" value="Pesquisar"
+						action="#{agendamentoControle.listarPorStatus()}" update="tab"
+						onclick="limparCampos()" />
 
+					<p:commandButton styleClass="btn btn-success" value="Listar Todos"
+						action="#{agendamentoControle.listarTodos()}" update="tab" />
+				</p:panelGrid>
 				<p:dataTable id="tab" var="ag"
 					value="#{agendamentoControle.agendamentos}" rows="5"
 					paginator="true"

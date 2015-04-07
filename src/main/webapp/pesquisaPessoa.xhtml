@@ -26,28 +26,28 @@
 
 		<p:layoutUnit position="center">
 			<h:form>
-				<p:panelGrid columns="2">
-					<p:outputLabel value="Digite o Nome da Pessoa:"></p:outputLabel>
-					<p:inputText id="nome" value="#{pessoaControle.pessoa.nome}"></p:inputText>
-					<p:outputLabel value="OU"></p:outputLabel>
-					<br />
-					<p:outputLabel value="Digite o Username/Login da Pessoa:"></p:outputLabel>
+				<p:panelGrid columns="2" style="width:60%;">
+					<p:outputLabel value="Digite o nome da pessoa:" />
+					<p:inputText id="nome" value="#{pessoaControle.pessoa.nome}"
+						style="width:99%;" size="40" />
+
+					<p:outputLabel value="Digite o username/login da pessoa:" />
 					<p:inputText id="username"
-						value="#{pessoaControle.pessoa.username}"></p:inputText>
+						value="#{pessoaControle.pessoa.username}" style="width:99%;" />
 				</p:panelGrid>
-				<p:panelGrid columns="3">
+				
+					<p:commandButton styleClass="btn btn-success "
+						value="Cadastrar nova pessoa" type="button"
+						onclick="PF('dlg2').show();" />
+
+					<p:commandButton styleClass="btn btn-success " value="Listar todos"
+						action="#{pessoaControle.listarTodos()}" update="tab" />
+
 					<p:commandButton styleClass="btn btn-success " value="Pesquisar"
 						action="#{pessoaControle.listaPorFiltro()}" update="tab"
-						onclick="limparCampos()">
-					</p:commandButton>
-					<p:commandButton styleClass="btn btn-success " value="Listar Todos"
-						action="#{pessoaControle.listarTodos()}" update="tab">
-					</p:commandButton>
-
-					<p:commandButton styleClass="btn btn-success "
-						value="Cadastrar Nova Pessoa" type="button"
-						onclick="PF('dlg2').show();" />
-				</p:panelGrid>
+						onclick="limparCampos()" />
+						
+				
 				<p:dataTable id="tab" var="p" value="#{pessoaControle.pessoas}"
 					rows="5" paginator="true"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -65,10 +65,8 @@
 
 		</p:layoutUnit>
 
-
-
 		<p:dialog header="Cadastrar Pessoa" widgetVar="dlg2" modal="true"
-			height="400" width="500">
+			height="400" width="600">
 			<h:form id="form">
 				<p:growl id="messages" />
 				<p:tabView>

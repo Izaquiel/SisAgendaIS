@@ -8,5 +8,5 @@ package enums;
  *
  */
 public enum Status {
-	NAO_CUMPRIDO, CUMPRIDO;
+	CUMPRIDO, NAO_CUMPRIDO;
 }

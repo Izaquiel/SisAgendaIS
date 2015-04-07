@@ -6,6 +6,8 @@ package beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -33,6 +35,7 @@ public class CompromissoControle {
 	public void salvar() {
 		service.salvar(compromisso);
 		compromisso = new Compromisso();
+		addMessage("Compromisso cadastrado com sucesso!");
 	}
 	
 	public void remover(){
@@ -72,4 +75,8 @@ public class CompromissoControle {
 		this.compromissos = compromissos;
 	}
 	
+	public void addMessage(String summary) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary,  null);
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
 }
