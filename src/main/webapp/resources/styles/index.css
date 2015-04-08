@@ -1,6 +1,5 @@
 body {
 	float: left;
-
 	min-width: 100%;
 }
 
@@ -12,19 +11,33 @@ body {
 }
 
 #topo {
+	
 }
 
-#conteudo{	
+#conteudo {
+	
+}
+
+.panel .panel-footer {
+	min-width: 90%;
 }
 
 #footer {
+	min-width: 90%;
 	text-align: center;
 	margin-bottom: 0;
 }
 
 #agenda {
-	width:30%;
-	height:30%;
+	width: 30%;
+	height: 30%;
+	margin-top: 2%;
+	float: right;
+}
+
+#ag {
+	width: 40%;
+	height: 40%;
 	margin-top: 2%;
 	float: right;
 }
@@ -36,7 +49,7 @@ body {
 	float: left;
 }
 
-p{
+p {
 	margin: 0;
 }
 
