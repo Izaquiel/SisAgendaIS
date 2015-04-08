@@ -7,26 +7,35 @@
 	<title>Inicio</title>
 	<link type="text/css" rel="stylesheet"
 		href="resources/styles/index.css" />
+	<link type="text/css" rel="stylesheet"
+		href="resources/bootstrap/bootstrap.min.css" />
 </h:head>
 <h:body>
-	<div id="container">
-		<img src="resources/imagens/lo.png" alt="logo" />
-		<p:toolbar>
-			<p:toolbarGroup align="right">
-				<p:link outcome="login" value="Efetuar Login" />
-				<p:separator />
-				<p:link outcome="sobre" value="Sobre" />
-			</p:toolbarGroup>
-		</p:toolbar>
-		<img id="agenda" alt="agenda" src="resources/imagens/agenda2.jpg" />
-		<p:outputPanel>
-			<p id="texto">Seja bem-vindo ao sistema de Agendamentos da
-				Império Software, com ele você pode cadastrar os seus agendamentos
-				de forma simples e rápida, além de poder visualizar o status de cada
-				agendamento e quem é o responsável pelo mesmo.</p>
-		</p:outputPanel>
-
-		<div id="footer">
+	<div id="container" class="panel panel-default">
+		<div id="topo">
+			<img src="resources/imagens/lo.png" alt="logo" />
+			<p:toolbar>
+				<p:toolbarGroup align="right">
+					<p:link outcome="login" value="Efetuar Login" />
+					<p:separator />
+					<p:link outcome="sobre" value="Sobre" />
+				</p:toolbarGroup>
+				<p:toolbarGroup align="left">
+					<p:link outcome="index" value="Inicio" />
+				</p:toolbarGroup>
+			</p:toolbar>
+		</div>
+		<div id="conteudo" class="panel panel-body">
+			<img id="agenda" alt="agenda" src="resources/imagens/agenda2.jpg" />
+			<p:outputPanel>
+				<p id="texto" class="col-lg-1">Seja bem-vindo ao sistema de Agendamentos da
+					Império Software, com ele você pode cadastrar os seus agendamentos
+					de forma simples e rápida, além de poder visualizar o status de
+					cada agendamento e quem é o responsável pelo mesmo.</p>
+			</p:outputPanel>
+		</div>
+		
+		<div id="footer" class="panel panel-footer">
 			<p:outputPanel>
 				<p>&#169; Todos os direitos reservados</p>
 			</p:outputPanel>
