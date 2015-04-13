@@ -24,6 +24,7 @@ public class DaoImpl<T> implements Dao<T> {
 
 	@Inject
 	private EntityManager em;
+	
 	private Session session;
 
 	public Session getSession() {
@@ -66,9 +67,9 @@ public class DaoImpl<T> implements Dao<T> {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public T getComFiltro(Map params, Class<?> c) {
-
+		try{
 		Criteria cri = getSession().createCriteria(c);
-
+		
 		Set<String> chaves = params.keySet();
 
 		for (String chave : chaves) {
@@ -77,6 +78,11 @@ public class DaoImpl<T> implements Dao<T> {
 
 		T result = (T) cri.uniqueResult();
 		return result;
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
