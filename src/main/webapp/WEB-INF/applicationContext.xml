@@ -12,13 +12,12 @@
 
 
 	<http use-expressions="true">
-		<intercept-url pattern="/admin/**" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
 		<form-login login-page="/login.xhtml" default-target-url="/admin/index.xhtml"
 			authentication-failure-url="/login.xhtml?erro=true" />
 	</http>
 
 	<bean:bean id="applicationUserDetailsService" class="seguranca/AutenticacaoService" />
-
 
 	<authentication-manager>
 		<authentication-provider user-service-ref="applicationUserDetailsService">
