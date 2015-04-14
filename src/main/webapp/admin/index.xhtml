@@ -3,7 +3,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/tags" >
 <h:head>
 	<title><ui:insert name="title">Inicio</ui:insert></title>
 	<ui:insert name="styles">
@@ -16,36 +17,44 @@
 </h:head>
 
 <h:body>
-	<p:layout fullPage="true" >
+	<p:layout fullPage="true">
 
 		<div id="top">
 			<p:layoutUnit id="topo" position="north" size="110" resizable="true"
 				collapsible="true">
 				<ui:insert name="top">
 					<img id="logo" src="../resources/imagens/lo.png" />
-<!-- 					<h2>Sistema de Agendamento</h2> -->
 				</ui:insert>
 			</p:layoutUnit>
 		</div>
 
 		<div id="left">
+
 			<p:layoutUnit position="west" size="220" resizable="true"
 				collapsible="true">
 				<ui:insert name="left">
-					<p:panelMenu style="width:210px">
+
+					<p:panelMenu style="width:212px">
 						<p:submenu label="Cadastros" icon="ui-icon-document">
-							<p:menuitem value="Pessoa" url="pesquisaPessoa.xhtml" icon="ui-icon-contact" />
-							<p:menuitem value="Compromisso" url="pesquisaCompromisso.xhtml" icon="ui-icon-contact" />
+							<p:menuitem value="Pessoa" url="pesquisaPessoa.xhtml"
+								icon="ui-icon-contact" />
+							<p:menuitem value="Compromisso" url="pesquisaCompromisso.xhtml"
+								icon="ui-icon-contact" />
 						</p:submenu>
-
-						<p:submenu label="Agendamento" >
-							<p:menuitem value="Realizar Agendamento" url="cadastroAgendamento.xhtml" icon="ui-icon-contact" />
-							<p:menuitem value="Listar Agendamentos" url="pesquisaAgendamento.xhtml" icon="ui-icon-search" />
+						
+						<p:submenu label="Agendamento" rendered="#{sec:areAnyGranted('ROLE_ADMIN')}" >
+							<p:menuitem value="Realizar Agendamento"
+								url="cadastroAgendamento.xhtml" icon="ui-icon-contact" />
+							<p:menuitem value="Listar Agendamentos"
+								url="pesquisaAgendamento.xhtml" icon="ui-icon-search" />
 						</p:submenu>
-
+					
 					</p:panelMenu>
-					<p:commandButton type="button" value="Logout"
-						icon="ui-icon-extlink" />
+						
+					<form action="SisAgenda/j_spring_security_logout" method="post">
+						<h:commandButton styleClass="btn btn-danger btn-block"
+							value="Sair" />
+					</form>
 				</ui:insert>
 			</p:layoutUnit>
 		</div>
