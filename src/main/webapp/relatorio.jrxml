@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8342f4ec-a4fa-463c-a419-cff7d0398354">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     agendamento."id",
+     agendamento."datacadastro",
+     agendamento."dataexecucao",
+     agendamento."horacadastro",
+     agendamento."horaexecucao",
+     agendamento."status",
+     agendamento."compromisso_id",
+     agendamento."pessoa_id"
+FROM
+     "public"."agendamento" agendamento]]>
+	</queryString>
+	<field name="id" class="java.lang.Long"/>
+	<field name="datacadastro" class="java.sql.Date"/>
+	<field name="dataexecucao" class="java.sql.Date"/>
+	<field name="horacadastro" class="java.sql.Time"/>
+	<field name="horaexecucao" class="java.sql.Time"/>
+	<field name="status" class="java.lang.String"/>
+	<field name="compromisso_id" class="java.lang.Long"/>
+	<field name="pessoa_id" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="69" height="20" uuid="a4c15d07-694e-46c7-826b-f8a996346bce"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+					<paragraph lineSpacing="1_1_2" spacingBefore="1"/>
+				</textElement>
+				<text><![CDATA[pessoa_id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="96" y="0" width="69" height="20" uuid="51d63571-5763-480e-b99d-7bba3941358a"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+					<paragraph lineSpacing="Single" spacingBefore="1"/>
+				</textElement>
+				<text><![CDATA[compromisso_id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="0" width="69" height="20" uuid="c17d3a52-7a02-4aae-b0fc-4b4c23190956"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+					<paragraph lineSpacing="Single" spacingBefore="1"/>
+				</textElement>
+				<text><![CDATA[status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="0" width="69" height="20" uuid="d6acb5b8-a231-4965-b39a-246097ab5ee0"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+					<paragraph lineSpacing="Single" spacingBefore="1"/>
+				</textElement>
+				<text><![CDATA[horacadastro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="391" y="0" width="69" height="20" uuid="ed49171d-6810-43bb-86fd-ab716ac2eb39"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+					<paragraph lineSpacing="Single" spacingBefore="1"/>
+				</textElement>
+				<text><![CDATA[datacadastro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="483" y="0" width="69" height="20" uuid="2ff08e4d-4844-4bef-9200-fb7163ad6f73"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+					<paragraph lineSpacing="Single" spacingBefore="1"/>
+				</textElement>
+				<text><![CDATA[id]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="69" height="20" uuid="b5f2746b-da1b-45b7-96d9-280de7cf0a08"/>
+				<textElement textAlignment="Center">
+					<paragraph lineSpacing="1_1_2" spacingBefore="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pessoa_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="96" y="0" width="69" height="20" uuid="33bc4079-cf93-4233-8e98-90d6bdb06c4d"/>
+				<textElement textAlignment="Center">
+					<paragraph lineSpacing="Single" spacingBefore="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{compromisso_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="184" y="0" width="69" height="20" uuid="38ed2729-eb0b-4568-9723-155eb9aefde3"/>
+				<textElement textAlignment="Center">
+					<paragraph lineSpacing="Single" spacingBefore="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="288" y="0" width="69" height="20" uuid="1eb74b24-4d2d-43f4-8787-0e6ed4d9f63b"/>
+				<textElement textAlignment="Center">
+					<paragraph lineSpacing="1_1_2" spacingBefore="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{horacadastro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="391" y="4" width="69" height="20" uuid="2947c5e5-331c-426e-ac05-6d88042d7352"/>
+				<textElement textAlignment="Center">
+					<paragraph lineSpacing="Single" spacingBefore="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{datacadastro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="483" y="0" width="69" height="20" uuid="f273a71c-62a9-4ba0-8cea-f8c612073b74"/>
+				<textElement textAlignment="Center">
+					<paragraph lineSpacing="Single" spacingBefore="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
