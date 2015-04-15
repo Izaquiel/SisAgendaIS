@@ -4,7 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:sec="http://www.springframework.org/security/tags" >
+	xmlns:sec="http://www.springframework.org/security/tags">
 <h:head>
 	<title><ui:insert name="title">Inicio</ui:insert></title>
 	<ui:insert name="styles">
@@ -27,7 +27,7 @@
 				</ui:insert>
 			</p:layoutUnit>
 		</div>
-		
+
 		<div id="left">
 
 			<p:layoutUnit position="west" size="220" resizable="true"
@@ -41,22 +41,27 @@
 							<p:menuitem value="Compromisso" url="pesquisaCompromisso.xhtml"
 								icon="ui-icon-contact" />
 						</p:submenu>
-						
-						<p:submenu label="Agendamento" rendered="#{sec:areAnyGranted('ROLE_ADMIN')}" >
+
+						<p:submenu label="Agendamento"
+							rendered="#{sec:areAnyGranted('ROLE_ADMIN')}">
 							<p:menuitem value="Realizar Agendamento"
 								url="cadastroAgendamento.xhtml" icon="ui-icon-contact" />
 							<p:menuitem value="Listar Agendamentos"
 								url="pesquisaAgendamento.xhtml" icon="ui-icon-search" />
 						</p:submenu>
-					
+
+						<p:submenu label="Relatório" rendered="#{sec:areAnyGranted('ROLE_ADMIN')}">
+							<p:menuitem value="Relatórios"
+								url="relatorio.xhtml" icon="ui-icon-contact" />
+						</p:submenu>
 					</p:panelMenu>
-						
+
 					<form action="SisAgenda/j_spring_security_logout" method="post">
 						<h:commandButton styleClass="btn btn-danger btn-block"
 							value="Sair" />
 					</form>
 				</ui:insert>
-				
+
 			</p:layoutUnit>
 		</div>
 
@@ -67,7 +72,7 @@
 				</p:layoutUnit>
 			</ui:insert>
 		</div>
-		
+
 		<div id="footer">
 			<ui:insert name="footer">
 				<p:layoutUnit position="south" size="50" resizable="true"

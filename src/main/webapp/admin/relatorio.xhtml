@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="./index.xhtml">
+	<ui:define name="title">Relatório</ui:define>
+	<ui:define name="styles">
+		<link rel="stylesheet" href="../resources/bootstrap/bootstrap.min.css"></link>
+		<link rel="stylesheet" href="../resources/styles/styles.css"></link>
+	</ui:define>
+
+	<ui:define name="content">
+		<p:layoutUnit position="center">
+			<h:form>
+				<p:panelGrid columns="2">
+					<p:outputLabel
+						value="Selecione o status do agendamento para o relatório:" />
+					<p:selectOneMenu value="#{relatorioControle.statusSelecionado}">
+						<f:selectItems value="#{relatorioControle.Status()}" />
+					</p:selectOneMenu>
+				</p:panelGrid>
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Data inicial:" />
+					<p:calendar value="#{relatorioControle.inicio}"
+						pattern="dd/MM/yyyy">
+					</p:calendar>
+				</p:panelGrid>
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Data final:" />
+					<p:calendar value="#{relatorioControle.fim}"
+						pattern="dd/MM/yyyy">
+					</p:calendar>
+				</p:panelGrid>
+
+				<p:commandButton styleClass="btn btn-success"
+					value="Gerar relatorio" action="#{relatorioControle.printPDF()}"
+					ajax="false" />
+
+			</h:form>
+		</p:layoutUnit>
+
+	</ui:define>
+</ui:composition>
+</html>

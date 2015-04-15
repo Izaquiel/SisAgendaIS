@@ -3,14 +3,10 @@
  */
 package persistencia;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
@@ -18,15 +14,11 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.internal.SessionFactoryImpl;
-import org.hibernate.jdbc.Work;
-import org.hibernate.jpa.internal.EntityManagerImpl;
 
 /**
  * @author Izaquiel Cruz
  *
  */
-
 public class DaoImpl<T> implements Dao<T> {
 
 	@Inject
@@ -40,23 +32,6 @@ public class DaoImpl<T> implements Dao<T> {
 		}
 		return session;
 	}
-	
-	@Produces
-	@RequestScoped
-	public Connection getConnection() {
-        try {
-            EntityManagerImpl factory = (EntityManagerImpl) em;
-            System.out.println(factory);
-            SessionFactoryImpl sessionFactoryImpl = (SessionFactoryImpl) factory.getSession().getSessionFactory();
-            System.out.println(sessionFactoryImpl);
-            System.out.println(sessionFactoryImpl.getConnectionProvider().getConnection());
-            return sessionFactoryImpl.getConnectionProvider().getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        System.out.println("nulo como retorno");
-        return null;
-    }
 
 	@Override
 	public void salvar(T entity) {

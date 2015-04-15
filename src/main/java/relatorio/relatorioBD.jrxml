@@ -6,6 +6,12 @@
 	<parameter name="status" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="inicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fim" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
      agendamento."id" AS agendamento_id,
@@ -17,7 +23,8 @@
 FROM
      "public"."compromisso" compromisso INNER JOIN "public"."agendamento" agendamento ON compromisso."id" = agendamento."compromisso_id"
      INNER JOIN "public"."pessoa" pessoa ON agendamento."pessoa_id" = pessoa."id"
-WHERE agendamento."status" = $P{status}]]>
+WHERE agendamento."status" = $P{status} AND agendamento."datacadastro" >= $P{inicio} AND
+agendamento."datacadastro" <= $P{fim}]]>
 	</queryString>
 	<field name="agendamento_id" class="java.lang.Long"/>
 	<field name="datacadastro" class="java.sql.Date"/>
@@ -42,11 +49,13 @@ WHERE agendamento."status" = $P{status}]]>
 	<pageHeader>
 		<band height="35" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="555" height="20" uuid="d0ab5a4f-423c-4d51-9de4-2fbdb4954567"/>
+				<reportElement x="0" y="0" width="555" height="35" uuid="d0ab5a4f-423c-4d51-9de4-2fbdb4954567"/>
 				<textElement textAlignment="Center">
-					<font size="13"/>
+					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Relatório para agendamentos "+ $P{status}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Relatório para agendamentos "+ $P{status} + " cadastrados entre "
++ new java.text.SimpleDateFormat("dd/MM/yyyy").format($P{inicio})
++ " e " + new java.text.SimpleDateFormat("dd/MM/yyyy").format($P{fim})]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
