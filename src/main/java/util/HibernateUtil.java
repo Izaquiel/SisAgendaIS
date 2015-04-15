@@ -23,8 +23,8 @@ public class HibernateUtil {
 	@Produces
 	@RequestScoped
 	public EntityManager getEntityManager(){
+		System.out.println("Pegando Entity Manager!");
 		return factory.createEntityManager();
 	}
-	
 	
 }

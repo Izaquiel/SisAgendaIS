@@ -28,6 +28,7 @@
 
 		<p:layoutUnit position="center">
 			<h:form>
+			<p:commandButton value="Print" action="#{agendamentoControle.pdf()}" ajax="false"></p:commandButton>
 				<p:panelGrid columns="2" style="width:60%;">
 					<p:outputLabel value="Digite o nome da pessoa:" />
 					<p:inputText id="nome" value="#{pessoaControle.pessoa.nome}"

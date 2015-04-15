@@ -3,15 +3,19 @@
  */
 package beans;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.model.SelectItem;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import net.sf.jasperreports.engine.JRException;
 import pojos.Agendamento;
 import servicos.AgendamentoService;
 import enums.Status;
@@ -27,7 +31,7 @@ public class AgendamentoControle {
 
 	@Inject
 	private AgendamentoService service;
-	
+	RelatorioControle controle = new RelatorioControle();
 	private Agendamento agendamento = new Agendamento();
 	private Date data = new Date();
 	private List<Agendamento> agendamentos = new ArrayList<>();
@@ -56,6 +60,24 @@ public class AgendamentoControle {
 		filter.setStatus(agendamento.getStatus());
 		agendamentos = service.listarPorFiltro(filter);
 		agendamento = new Agendamento();
+	}
+	
+	public void pdf() throws JRException{
+		Map<String, Object> map = new HashMap<>();
+		map.put("status", Status.NAO_CUMPRIDO.toString());
+		
+		RelatorioControle rel = new RelatorioControle();
+		try {
+			rel.printPDF(map);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+//		InputStream fonte = AgendamentoControle.class.getResourceAsStream("/relatorio/relatorioBD.jrxml");
+//		JasperReport pathjrxml = JasperCompileManager.compileReport(fonte);
+//		JasperPrint printReport = JasperFillManager.fillReport(pathjrxml, map);
+//		JasperViewer.viewReport(printReport, false);
+//		JasperExportManager.exportReportToPdfFile(printReport, "reportex.pdf");
 	}
 	
 	public void listarTodos(){

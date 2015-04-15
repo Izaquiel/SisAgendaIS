@@ -4,21 +4,23 @@
 package beans;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.util.Map;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
-import pojos.Agendamento;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.JasperReport;
 
 /**
  * @author Izaquiel Cruz
@@ -30,20 +32,31 @@ public class RelatorioControle {
 	
 	JasperPrint jasperPrint;
 	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public void init(List<Agendamento> lista)throws JRException{
-		JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(lista);
-		String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("relatorio.jasper");
-		jasperPrint = JasperFillManager.fillReport(path, new HashMap(), beanCollectionDataSource);
+	@Inject
+	private Connection con;
+	
+	public RelatorioControle() {
 	}
 	
-	public void printPDF(List<Agendamento> lista) throws JRException, IOException{
-		init(lista);
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public void init(Map map)throws JRException{
+//		String fonte = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/classes/relatorio/relatorioBD.jrxml");
+		InputStream fonte = RelatorioControle.class.getResourceAsStream("/relatorio/relatorioBD.jrxml");
+		JasperReport path = JasperCompileManager.compileReport(fonte);
+		jasperPrint = JasperFillManager.fillReport(path, map, con);
+		System.out.println(con);
+		
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public void printPDF(Map map) throws JRException, IOException{
+		init(map);
 		HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse(); 
-		response.addHeader("Content-disposition", "attachment; filename=report.pdf");
+		response.addHeader("Content-disposition", "attachment; filename=relatorio.pdf");
 		ServletOutputStream outputStream = response.getOutputStream();
 		JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
 		FacesContext.getCurrentInstance().responseComplete();
+		
 	}
 	
 }
