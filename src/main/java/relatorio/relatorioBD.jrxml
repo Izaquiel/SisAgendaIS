@@ -157,12 +157,12 @@ agendamento."datacadastro" <= $P{fim}]]>
 			<textField>
 				<reportElement x="92" y="0" width="92" height="20" uuid="284730c4-0c25-424f-a1d6-0e2c522fb9aa"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{datacadastro}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{datacadastro})]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="184" y="0" width="92" height="20" uuid="bcae6580-0304-4d46-89e5-65ab31e1b90a"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{dataexecucao}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{dataexecucao})]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="276" y="0" width="92" height="20" uuid="b94537f2-7f4a-4e4a-8109-fd658f807885"/>

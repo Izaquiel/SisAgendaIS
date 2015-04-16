@@ -36,9 +36,11 @@
 				</p:panelGrid>
 
 				<p:commandButton styleClass="btn btn-success"
-					value="Gerar relatorio" action="#{relatorioControle.printPDF()}"
+					value="Visualizar relatório" action="#{relatorioControle.visualizaPdf()}"
 					ajax="false" />
-
+				<p:commandButton styleClass="btn btn-success"
+					value="Download relatório" action="#{relatorioControle.printPDF()}"
+					ajax="false" />
 			</h:form>
 		</p:layoutUnit>
 

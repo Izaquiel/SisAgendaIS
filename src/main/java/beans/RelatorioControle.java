@@ -26,6 +26,7 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 import enums.Status;
 
 /**
@@ -69,6 +70,15 @@ public class RelatorioControle {
 		JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
 		FacesContext.getCurrentInstance().responseComplete();
 		
+	}
+	
+	public void visualizaPdf() throws JRException{
+		Map<String, Object> map = new HashMap<>();
+		map.put("status", statusSelecionado.toString());
+		map.put("inicio", inicio);
+		map.put("fim", fim);
+		init(map);
+		JasperViewer.viewReport(jasperPrint, false);
 	}
 
 	public Status getStatusSelecionado() {
