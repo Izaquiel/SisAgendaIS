@@ -20,11 +20,11 @@
 						<f:selectItems value="#{agendamentoControle.Status()}" />
 					</p:selectOneMenu>
 
-					<p:commandButton styleClass="btn" value="Pesquisar"
+					<p:commandButton styleClass="ui-priority-primary" value="Pesquisar"
 						action="#{agendamentoControle.listarPorStatus()}" update="tab"
 						onclick="limparCampos()" />
 
-					<p:commandButton styleClass="btn btn-success" value="Listar Todos"
+					<p:commandButton styleClass="ui-priority-primary" value="Listar Todos"
 						action="#{agendamentoControle.listarTodos()}" update="tab" />
 				</p:panelGrid>
 				<p:dataTable id="tab" var="ag"

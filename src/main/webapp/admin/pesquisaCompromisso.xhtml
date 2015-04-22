@@ -29,14 +29,14 @@
 
 				</p:panelGrid>
 					
-				<p:commandButton styleClass="btn btn-success "
+				<p:commandButton styleClass="ui-priority-primary"
 					value="Cadastrar novo compromisso" type="button"
 					onclick="PF('dlg1').show();" />
 
-				<p:commandButton styleClass="btn btn-success" value="Listar todos"
+				<p:commandButton styleClass="ui-priority-primary" value="Listar todos"
 					action="#{compromissoControle.listarTodos()}" update="tab" />
 
-				<p:commandButton styleClass="btn btn-success" value="Pesquisar"
+				<p:commandButton styleClass="ui-priority-primary" value="Pesquisar"
 					action="#{compromissoControle.listarPorDescricao()}" update="tab"
 					onclick="limparCampos()" />
 
