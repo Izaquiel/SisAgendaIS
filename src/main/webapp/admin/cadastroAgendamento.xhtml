@@ -20,51 +20,52 @@
 					<p:tab title="Dados do Agendamento">
 						<p:panelGrid columns="2" styleClass="form-control">
 							<p:outputLabel value="Pessoa:"></p:outputLabel>
-						
+
 							<p:selectOneMenu
 								value="#{agendamentoControle.agendamento.pessoa}"
 								converter="pessoaConverter">
 								<f:selectItems value="#{pessoaControle.listarTodos()}" var="pe"
 									itemLabel="#{pe.nome}" itemValue="#{pe}"></f:selectItems>
 							</p:selectOneMenu>
-							
+
 							<p:outputLabel value="Compromisso:"></p:outputLabel>
-							
+
 							<p:selectOneMenu
 								value="#{agendamentoControle.agendamento.compromisso}"
 								converter="compromissoConverter">
 								<f:selectItems value="#{compromissoControle.listarTodos()}"
 									var="com" itemLabel="#{com.descricao}" itemValue="#{com}"></f:selectItems>
 							</p:selectOneMenu>
-						
+
 							<p:outputLabel value="Data de Cadastro:"></p:outputLabel>
-							
+
 							<p:inputText value="#{agendamentoControle.data}" disabled="true">
 								<f:passThroughAttribute name="type" value="date"></f:passThroughAttribute>
 								<f:convertDateTime type="date" pattern="dd-MM-yyyy"
 									timeZone="GMT-3" />
 							</p:inputText>
-							
+
 							<p:outputLabel value="Hora de Cadastro:" />
-							
+
 							<p:calendar
 								value="#{agendamentoControle.agendamento.horaCadastro}"
 								pattern="HH:mm a" timeOnly="true" />
-							
+
 							<p:outputLabel value="Data de Execução:"></p:outputLabel>
-							
+
 							<p:calendar
-								value="#{agendamentoControle.agendamento.dataExecucao}" pattern="dd/MM/yyyy">
+								value="#{agendamentoControle.agendamento.dataExecucao}"
+								pattern="dd/MM/yyyy">
 							</p:calendar>
-							
+
 							<p:outputLabel value="Hora de Execução:" />
-						
+
 							<p:calendar
 								value="#{agendamentoControle.agendamento.horaExecucao}"
 								pattern="HH:mm a" timeOnly="true" />
-							
+
 							<p:outputLabel value="Status:"></p:outputLabel>
-							
+
 							<p:selectOneMenu
 								value="#{agendamentoControle.agendamento.status}">
 								<f:selectItems value="#{agendamentoControle.Status()}"></f:selectItems>
@@ -72,7 +73,7 @@
 						</p:panelGrid>
 					</p:tab>
 				</p:tabView>
-				<p:commandButton styleClass="ui-priority-primary pull-right"
+				<p:commandButton
 					style="margin-top: 10px;" action="#{agendamentoControle.salvar()}"
 					value="Salvar" ajax="false"></p:commandButton>
 			</h:form>

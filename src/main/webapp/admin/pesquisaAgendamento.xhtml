@@ -16,15 +16,15 @@
 			<h:form>
 				<p:panelGrid columns="2" style="text-align:center;">
 					<p:outputLabel value="Escolha o Status do Agendamento:" />
-					<p:selectOneMenu value="#{agendamentoControle.agendamento.status}" >
+					<p:selectOneMenu value="#{agendamentoControle.agendamento.status}">
 						<f:selectItems value="#{agendamentoControle.Status()}" />
 					</p:selectOneMenu>
 
-					<p:commandButton styleClass="ui-priority-primary" value="Pesquisar"
+					<p:commandButton value="Pesquisar"
 						action="#{agendamentoControle.listarPorStatus()}" update="tab"
 						onclick="limparCampos()" />
 
-					<p:commandButton styleClass="ui-priority-primary" value="Listar Todos"
+					<p:commandButton value="Listar Todos"
 						action="#{agendamentoControle.listarTodos()}" update="tab" />
 				</p:panelGrid>
 				<p:dataTable id="tab" var="ag"

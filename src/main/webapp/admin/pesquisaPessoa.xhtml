@@ -38,14 +38,13 @@
 						value="#{pessoaControle.pessoa.username}" style="width:99%;" />
 				</p:panelGrid>
 				
-					<p:commandButton styleClass="ui-priority-primary"
-						value="Cadastrar nova pessoa" type="button"
+					<p:commandButton value="Cadastrar nova pessoa" type="button"
 						onclick="PF('dlg2').show();" />
 
-					<p:commandButton styleClass="ui-priority-primary" value="Listar todos"
+					<p:commandButton value="Listar todos"
 						action="#{pessoaControle.listarTodos()}" update="tab" />
 
-					<p:commandButton styleClass="ui-priority-primary" value="Pesquisar"
+					<p:commandButton value="Pesquisar"
 						action="#{pessoaControle.listaPorFiltro()}" update="tab"
 						onclick="limparCampos()" />
 						
@@ -128,7 +127,7 @@
 
 				</p:tabView>
 
-				<p:commandButton styleClass="btn btn-success pull-right"
+				<p:commandButton styleClass="pull-right"
 					style="margin-top: 10px;" action="#{pessoaControle.salvar()}"
 					value="Salvar" onclick="dlg2.show();" icon="ui-icon-disk"
 					update="messages"></p:commandButton>

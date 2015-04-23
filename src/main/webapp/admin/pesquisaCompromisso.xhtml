@@ -29,14 +29,13 @@
 
 				</p:panelGrid>
 					
-				<p:commandButton styleClass="ui-priority-primary"
-					value="Cadastrar novo compromisso" type="button"
+				<p:commandButton value="Cadastrar novo compromisso" type="button"
 					onclick="PF('dlg1').show();" />
 
-				<p:commandButton styleClass="ui-priority-primary" value="Listar todos"
+				<p:commandButton value="Listar todos"
 					action="#{compromissoControle.listarTodos()}" update="tab" />
 
-				<p:commandButton styleClass="ui-priority-primary" value="Pesquisar"
+				<p:commandButton value="Pesquisar"
 					action="#{compromissoControle.listarPorDescricao()}" update="tab"
 					onclick="limparCampos()" />
 
@@ -76,7 +75,7 @@
 					</p:tab>
 				</p:tabView>
 
-				<p:commandButton styleClass="btn btn-success pull-right"
+				<p:commandButton styleClass="pull-right"
 					style="margin-top: 10px;" action="#{compromissoControle.salvar()}"
 					value="Salvar" onclick="dlg1.show();" icon="ui-icon-disk"
 					update="messages" />
